@@ -216,17 +216,247 @@
         .coffee-cup {
             width: 400px;
             height: 400px;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 50px rgba(255,107,53,0.1);
             animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
         }
 
-        .coffee-cup span {
-            font-size: 200px;
+        .coffee-cup::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,107,53,0.1) 50%, transparent 70%);
+            animation: shimmer-bg 3s linear infinite;
+        }
+
+        @keyframes shimmer-bg {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .multi-platform {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 2px solid rgba(255,107,53,0.2);
+            border-radius: 50%;
+            animation: rotate-ring 20s linear infinite;
+        }
+
+        @keyframes rotate-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .ring-2 {
+            width: 200px;
+            height: 200px;
+            border-color: rgba(255,149,88,0.2);
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+
+        .ring-3 {
+            width: 150px;
+            height: 150px;
+            border-color: rgba(217,78,31,0.2);
+            animation-duration: 10s;
+        }
+
+        .center-hub {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF9558 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(255,107,53,0.5);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .hub-icon {
+            font-size: 40px;
+            animation: sparkle 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255,107,53,0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 50px rgba(255,107,53,0.8);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+
+        .device {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+
+        .device span {
+            font-size: 25px;
+        }
+
+        .device-1 {
+            animation: orbit-1 8s linear infinite;
+        }
+
+        .device-2 {
+            animation: orbit-2 10s linear infinite;
+        }
+
+        .device-3 {
+            animation: orbit-3 12s linear infinite;
+        }
+
+        .device-4 {
+            animation: orbit-4 9s linear infinite;
+        }
+
+        .device-5 {
+            animation: orbit-5 11s linear infinite;
+        }
+
+        .device-6 {
+            animation: orbit-6 7s linear infinite;
+        }
+
+        @keyframes orbit-1 {
+            0% {
+                transform: rotate(0deg) translateX(120px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(120px) rotate(-360deg);
+            }
+        }
+
+        @keyframes orbit-2 {
+            0% {
+                transform: rotate(60deg) translateX(100px) rotate(-60deg);
+            }
+            100% {
+                transform: rotate(420deg) translateX(100px) rotate(-420deg);
+            }
+        }
+
+        @keyframes orbit-3 {
+            0% {
+                transform: rotate(120deg) translateX(110px) rotate(-120deg);
+            }
+            100% {
+                transform: rotate(480deg) translateX(110px) rotate(-480deg);
+            }
+        }
+
+        @keyframes orbit-4 {
+            0% {
+                transform: rotate(180deg) translateX(90px) rotate(-180deg);
+            }
+            100% {
+                transform: rotate(540deg) translateX(90px) rotate(-540deg);
+            }
+        }
+
+        @keyframes orbit-5 {
+            0% {
+                transform: rotate(240deg) translateX(105px) rotate(-240deg);
+            }
+            100% {
+                transform: rotate(600deg) translateX(105px) rotate(-600deg);
+            }
+        }
+
+        @keyframes orbit-6 {
+            0% {
+                transform: rotate(300deg) translateX(115px) rotate(-300deg);
+            }
+            100% {
+                transform: rotate(660deg) translateX(115px) rotate(-660deg);
+            }
+        }
+
+        .device::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF6B35;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255,107,53,0.8);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        /* 큰 화면에서 더 화려한 효과 */
+        @media (min-width: 1200px) {
+            .device-1, .device-3, .device-5 {
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2), 0 0 30px rgba(255,107,53,0.3);
+            }
+            
+            .device-2, .device-4, .device-6 {
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2), 0 0 30px rgba(255,149,88,0.3);
+            }
         }
 
         /* 애니메이션 */
@@ -272,9 +502,11 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
+        }
+
+        .rewards-text {
+            text-align: center;
         }
 
         .rewards-text h2 {
@@ -577,49 +809,6 @@
             line-height: 1.8;
         }
 
-        /* 매장 찾기 섹션 */
-        .store-locator {
-            background: #FFF5F0;
-            padding: 80px 0;
-        }
-
-        .store-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .store-content h2 {
-            font-size: 36px;
-            background: linear-gradient(135deg, #D94E1F 0%, #FF6B35 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        .store-content p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        .search-box {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
         /* 기프티콘 섹션 */
         .gifticon-section {
             padding: 100px 0;
@@ -875,41 +1064,36 @@
             margin-bottom: 40px;
         }
 
-        /* 상품권 컨테이너 최대 너비 설정 */
+        .voucher-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .voucher-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            justify-content: center;
         }
 
-        /* 5번째와 6번째 카드를 중앙에 배치 */
         @media (min-width: 1200px) {
-            .voucher-card:nth-child(5) {
-                grid-column: 2 / 3;
-            }
-
-            .voucher-card:nth-child(6) {
-                grid-column: 3 / 4;
-            }
-        }
-
-        @media (max-width: 1199px) and (min-width: 900px) {
             .voucher-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(280px, 350px));
+                justify-content: center;
             }
         }
 
-        @media (max-width: 899px) and (min-width: 600px) {
+        @media (max-width: 768px) {
             .voucher-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
-        @media (max-width: 599px) {
+        @media (max-width: 480px) {
             .voucher-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
         }
 
@@ -1111,20 +1295,99 @@
                 height: 300px;
             }
 
-            .coffee-cup span {
-                font-size: 150px;
+            .multi-platform {
+                width: 250px;
+                height: 250px;
+            }
+
+            .orbit-ring {
+                width: 200px;
+                height: 200px;
+            }
+
+            .ring-2 {
+                width: 160px;
+                height: 160px;
+            }
+
+            .ring-3 {
+                width: 120px;
+                height: 120px;
+            }
+
+            .center-hub {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hub-icon {
+                font-size: 30px;
+            }
+
+            .device {
+                width: 40px;
+                height: 40px;
+            }
+
+            .device span {
+                font-size: 20px;
+            }
+
+            @keyframes orbit-1 {
+                0% {
+                    transform: rotate(0deg) translateX(90px) rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg) translateX(90px) rotate(-360deg);
+                }
+            }
+
+            @keyframes orbit-2 {
+                0% {
+                    transform: rotate(60deg) translateX(80px) rotate(-60deg);
+                }
+                100% {
+                    transform: rotate(420deg) translateX(80px) rotate(-420deg);
+                }
+            }
+
+            @keyframes orbit-3 {
+                0% {
+                    transform: rotate(120deg) translateX(85px) rotate(-120deg);
+                }
+                100% {
+                    transform: rotate(480deg) translateX(85px) rotate(-480deg);
+                }
+            }
+
+            @keyframes orbit-4 {
+                0% {
+                    transform: rotate(180deg) translateX(75px) rotate(-180deg);
+                }
+                100% {
+                    transform: rotate(540deg) translateX(75px) rotate(-540deg);
+                }
+            }
+
+            @keyframes orbit-5 {
+                0% {
+                    transform: rotate(240deg) translateX(82px) rotate(-240deg);
+                }
+                100% {
+                    transform: rotate(600deg) translateX(82px) rotate(-600deg);
+                }
+            }
+
+            @keyframes orbit-6 {
+                0% {
+                    transform: rotate(300deg) translateX(88px) rotate(-300deg);
+                }
+                100% {
+                    transform: rotate(660deg) translateX(88px) rotate(-660deg);
+                }
             }
 
             .promotion-content {
-                flex-direction: column;
-            }
-
-            .rewards-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .search-box {
                 flex-direction: column;
             }
 
@@ -1194,7 +1457,7 @@
     <header>
         <div class="header-inner">
             <div class="logo">
-                <div class="logo-icon">🌐</div>
+                <div class="logo-icon">🌍</div>
                 <span>GNP 멀티플렛폼</span>
             </div>
             <nav>
@@ -1203,7 +1466,6 @@
                     <li><span>PROMOTION</span></li>
                     <li><span>PARTNERS</span></li>
                     <li><span>GIFTICON</span></li>
-                    <li><span>가입상담</span></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -1217,13 +1479,37 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>혁신적인 디지털<br>솔루션을 만나보세요</h1>
-                <p>최첨단 기술로 구현하는 멀티플렛폼 서비스<br>비즈니스의 성장을 함께합니다</p>
-                <span class="btn btn-primary" style="font-size: 18px; padding: 12px 30px;">자세히 보기</span>
+                <h1>GNP 프리미엄 플랫폼</h1>
+                <p>최첨단 기술로 구현하는 안전한 멀티플렛폼 서비스</p>
             </div>
             <div class="hero-image">
                 <div class="coffee-cup">
-                    <span>💻</span>
+                    <div class="multi-platform">
+                        <div class="orbit-ring"></div>
+                        <div class="orbit-ring ring-2"></div>
+                        <div class="orbit-ring ring-3"></div>
+                        <div class="center-hub">
+                            <span class="hub-icon">✨</span>
+                        </div>
+                        <div class="device device-1">
+                            <span>☕</span>
+                        </div>
+                        <div class="device device-2">
+                            <span>🍔</span>
+                        </div>
+                        <div class="device device-3">
+                            <span>🎁</span>
+                        </div>
+                        <div class="device device-4">
+                            <span>💳</span>
+                        </div>
+                        <div class="device device-5">
+                            <span>🎬</span>
+                        </div>
+                        <div class="device device-6">
+                            <span>🍕</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1235,9 +1521,6 @@
             <div class="rewards-text">
                 <h2>GNP PLATFORM BENEFITS</h2>
                 <p>파트너가 되어 특별한 혜택을 누려보세요</p>
-            </div>
-            <div>
-                <span class="btn btn-outline" style="border-color: white; color: white;"><span style="color: white;">자세히 보기</span></span>
             </div>
         </div>
     </section>
@@ -1304,18 +1587,6 @@
                 신규 조합원 가입시 혜택을 드립니다,<br>
                 기존 조합원 추천 시 추가 혜택을 드립니다.</p>
                 <span class="btn btn-primary">조합원 가입 상담</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 연락처 섹션 -->
-    <section class="store-locator" id="contact">
-        <div class="store-content fade-in">
-            <h2>협동조합 가입상담</h2>
-            <p>함께 성장하는 협동조합의 첫걸음</p>
-            <div class="search-box">
-                <input type="text" placeholder="연락처 또는 이메일을 입력하세요">
-                <button class="btn btn-primary">가입 상담</button>
             </div>
         </div>
     </section>
@@ -1513,16 +1784,16 @@
                             <div class="voucher-design">
                                 <div class="voucher-pattern"></div>
                                 <div class="voucher-content">
-                                    <div class="voucher-logo">🏨</div>
-                                    <div class="voucher-brand">호텔신라</div>
-                                    <div class="voucher-amount">₩200,000</div>
-                                    <div class="voucher-code">GIFT-2025-HSL</div>
+                                    <div class="voucher-logo">🏛️</div>
+                                    <div class="voucher-brand">AK플라자</div>
+                                    <div class="voucher-amount">₩50,000</div>
+                                    <div class="voucher-code">GIFT-2025-AKP</div>
                                 </div>
                             </div>
                         </div>
                         <div class="voucher-info">
-                            <h4>호텔신라 상품권</h4>
-                            <p class="voucher-value">200,000원권</p>
+                            <h4>AK플라자 상품권</h4>
+                            <p class="voucher-value">50,000원권</p>
                         </div>
                     </div>
                     <div class="voucher-card">
@@ -1593,7 +1864,7 @@
                         <li><span>기술지원</span></li>
                         <li><span>자주하는 질문</span></li>
                         <li><span>다운로드</span></li>
-                        <li><span>가입상담</span></li>
+                        <li><span>문의하기</span></li>
                     </ul>
                 </div>
             </div>
